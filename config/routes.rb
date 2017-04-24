@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   namespace :admin do
     resources :jobs do
@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       end
       resources :resumes
     end
+  end
+
+  namespace :account do
+    resources :users
   end
 
   resources :jobs do
